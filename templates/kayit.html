@@ -1,0 +1,180 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kullanıcı Oluştur | VOLL Yönetim Paneli</title>
+    <meta name="description" content="VOLL Yönetim Paneli - Yeni Kullanıcı">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/favicon/favicon.png' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/admin_auth.css' %}">
+</head>
+
+<body class="auth-page">
+
+<div class="auth-wrapper">
+
+    <!-- Sol Panel -->
+    <div class="auth-left">
+        <div class="auth-grid-pattern"></div>
+
+        <!-- Logo -->
+        <div class="auth-logo">
+            <a href="{% url 'index' %}">
+                <img src="{% static 'img/logo/volllogowhite.png' %}" alt="VOLL Logo"
+                     onerror="this.onerror=null; this.src='{% static 'img/logo/volllogodark.png' %}'">
+            </a>
+        </div>
+
+        <!-- İçerik -->
+        <div class="auth-left-content">
+            <p class="auth-left-tagline">Kullanıcı Yönetimi</p>
+            <h1 class="auth-left-title">
+                Yeni Yönetici<br>
+                <span>Hesabı Oluştur</span>
+            </h1>
+            <p class="auth-left-desc">
+                Bu alan yalnızca yetkili süper administartörler tarafından kullanılabilir.
+                Oluşturulan hesaplar sisteme anında erişim kazanır.
+            </p>
+        </div>
+
+        <!-- Alt bilgi -->
+        <div class="auth-left-footer">
+            <div class="auth-left-footer-avatar">🔒</div>
+            <div class="auth-left-footer-text">
+                <p>"Bu sayfa yalnızca süper yöneticilere açıktır."</p>
+                <strong>VOLL — Güvenlik Sistemi</strong>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sağ Panel (Form) -->
+    <div class="auth-right">
+
+        <div class="auth-form-header">
+            <div class="auth-badge">
+                <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                    <circle cx="5" cy="5" r="4" fill="#8b5cf6"/>
+                </svg>
+                Süper Yönetici
+            </div>
+            <h2>Yeni Kullanıcı Oluştur</h2>
+            <p>Yönetim paneline erişebilecek yeni bir hesap tanımlayın.</p>
+        </div>
+
+        <!-- Mesajlar -->
+        {% if messages %}
+        <div class="auth-messages">
+            {% for message in messages %}
+                <div class="auth-alert
+                    {% if message.tags == 'error' %}auth-alert-error
+                    {% elif message.tags == 'success' %}auth-alert-success
+                    {% else %}auth-alert-warning{% endif %}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <!-- Form -->
+        <form method="POST" action="{% url 'admin_kayit' %}">
+            {% csrf_token %}
+
+            <div class="auth-field">
+                <label for="username">Kullanıcı Adı</label>
+                <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    placeholder="kullanici_adi"
+                    autocomplete="off"
+                    required
+                >
+            </div>
+
+            <div class="auth-field">
+                <label for="email">E-Posta Adresi <span style="color:#4a5568; font-weight:400;">(Opsiyonel)</span></label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="ornek@voll.com"
+                    autocomplete="off"
+                >
+            </div>
+
+            <div class="auth-field">
+                <label for="first_name">Ad</label>
+                <input
+                    type="text"
+                    id="first_name"
+                    name="first_name"
+                    placeholder="Adınız"
+                    autocomplete="off"
+                >
+            </div>
+
+            <div class="auth-field">
+                <label for="last_name">Soyad</label>
+                <input
+                    type="text"
+                    id="last_name"
+                    name="last_name"
+                    placeholder="Soyadınız"
+                    autocomplete="off"
+                >
+            </div>
+
+            <div class="auth-divider">
+                <span>Şifre Bilgileri</span>
+            </div>
+
+            <div class="auth-field">
+                <label for="password1">Şifre</label>
+                <input
+                    type="password"
+                    id="password1"
+                    name="password1"
+                    placeholder="En az 8 karakter"
+                    autocomplete="new-password"
+                    required
+                >
+            </div>
+
+            <div class="auth-field">
+                <label for="password2">Şifre Tekrar</label>
+                <input
+                    type="password"
+                    id="password2"
+                    name="password2"
+                    placeholder="Şifreyi tekrar girin"
+                    autocomplete="new-password"
+                    required
+                >
+            </div>
+
+            <button type="submit" class="auth-btn" style="background: linear-gradient(135deg, #7c3aed, #6d28d9);">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                    <circle cx="9" cy="7" r="4"/>
+                    <line x1="19" y1="8" x2="19" y2="14"/>
+                    <line x1="22" y1="11" x2="16" y2="11"/>
+                </svg>
+                Kullanıcıyı Oluştur
+            </button>
+        </form>
+
+        <div class="auth-switch">
+            <a href="{% url 'admin:index' %}">
+                ← Admin Paneline Dön
+            </a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

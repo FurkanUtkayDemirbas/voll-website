@@ -1,0 +1,142 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giriş Yap | VOLL Yönetim Paneli</title>
+    <meta name="description" content="VOLL Yönetim Paneli - Giriş">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/favicon/favicon.png' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/admin_auth.css' %}">
+</head>
+
+<body class="auth-page">
+
+<div class="auth-wrapper">
+
+    <!-- Sol Panel -->
+    <div class="auth-left">
+        <div class="auth-grid-pattern"></div>
+
+        <!-- Logo -->
+        <div class="auth-logo">
+            <a href="{% url 'index' %}">
+                <img src="{% static 'img/logo/volllogowhite.png' %}" alt="VOLL Logo"
+                     onerror="this.onerror=null; this.src='{% static 'img/logo/volllogodark.png' %}'">
+            </a>
+        </div>
+
+        <!-- İçerik -->
+        <div class="auth-left-content">
+            <p class="auth-left-tagline">Yönetim Paneli</p>
+            <h1 class="auth-left-title">
+                Sitenizi<br>
+                <span>Kolayca Yönetin</span>
+            </h1>
+            <p class="auth-left-desc">
+                İçeriklerinizi, referanslarınızı, blog yazılarınızı ve tüm site ayarlarınızı
+                tek bir yerden güvenle yönetebilirsiniz.
+            </p>
+        </div>
+
+        <!-- Alt bilgi -->
+        <div class="auth-left-footer">
+            <div class="auth-left-footer-avatar">V</div>
+            <div class="auth-left-footer-text">
+                <p>"Güçlü araçlar, sade bir deneyim."</p>
+                <strong>VOLL — Yönetim Sistemi</strong>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sağ Panel (Form) -->
+    <div class="auth-right">
+
+        <div class="auth-form-header">
+            <div class="auth-badge">
+                <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                    <circle cx="5" cy="5" r="4" fill="#3b82f6"/>
+                </svg>
+                Güvenli Bağlantı
+            </div>
+            <h2>Tekrar Hoş Geldiniz</h2>
+            <p>Yönetim paneline erişmek için giriş yapın.</p>
+        </div>
+
+        <!-- Mesajlar -->
+        {% if messages %}
+        <div class="auth-messages">
+            {% for message in messages %}
+                <div class="auth-alert
+                    {% if message.tags == 'error' %}auth-alert-error
+                    {% elif message.tags == 'success' %}auth-alert-success
+                    {% else %}auth-alert-warning{% endif %}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <!-- Genel hata (yanlış kullanıcı adı/şifre) -->
+        {% if hata %}
+        <div class="auth-messages">
+            <div class="auth-alert auth-alert-error">
+                {{ hata }}
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Form -->
+        <form method="POST" action="{% url 'admin_giris' %}">
+            {% csrf_token %}
+
+            <div class="auth-field">
+                <label for="username">Kullanıcı Adı</label>
+                <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    placeholder="kullanici_adi"
+                    value="{{ kullanici_adi|default:'' }}"
+                    autocomplete="username"
+                    required
+                >
+            </div>
+
+            <div class="auth-field">
+                <label for="password">Şifre</label>
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="••••••••"
+                    autocomplete="current-password"
+                    required
+                >
+            </div>
+
+            <div class="auth-options">
+                <label class="auth-remember">
+                    <input type="checkbox" name="remember" id="remember">
+                    <span>Beni Hatırla</span>
+                </label>
+            </div>
+
+            <button type="submit" class="auth-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/>
+                    <polyline points="10 17 15 12 10 7"/>
+                    <line x1="15" y1="12" x2="3" y2="12"/>
+                </svg>
+                Giriş Yap
+            </button>
+        </form>
+
+    </div>
+</div>
+
+</body>
+</html>

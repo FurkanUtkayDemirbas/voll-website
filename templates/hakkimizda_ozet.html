@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Hakkımızda | VOLL{% endblock %}
+{% block description %}VOLL hakkında. Kurumsal kimliğimiz, ekibimiz ve başarılarımız hakkında bilgi edinin.{% endblock %}
+
+{% block content %}
+
+<section class="breadcrumb__area breadcrumb__bg fix" data-background="{% static 'img/bg/breadcrumb_bg.jpg' %}">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumb__content">
+                    <h2 class="title">Hakkımızda</h2>
+                    <nav class="breadcrumb">
+                        <span property="itemListElement" typeof="ListItem">
+                            <a href="{% url 'index' %}">Anasayfa</a>
+                        </span>
+                        <span class="breadcrumb-separator">/</span>
+                        <span property="itemListElement" typeof="ListItem">
+                            <a href="{% url 'about' %}">Kurumsal</a>
+                        </span>
+                        <span class="breadcrumb-separator">/</span>
+                        <span property="itemListElement" typeof="ListItem">Özet</span>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% if about_page %}
+<section class="about__area-four section-py-140 p-relative fix">
+    <div class="container">
+        <div class="row align-items-center justify-content-center">
+            <div class="col-lg-6 col-md-9">
+                <div class="about__img-four">
+                    <img src="{{ about_page.image_1.url }}" alt="img" class="main-img">
+                    <img src="{{ about_page.image_2.url }}" alt="img" class="img-two"
+                        data-sal="slide-right" data-sal-duration="700" data-sal-delay="100">
+                    <div class="satisfaction__wrap" data-sal="slide-up" data-sal-duration="800" data-sal-delay="200">
+                        <div class="icon">
+                            <img src="{% static 'img/icons/satisfaction.svg' %}" alt="icon">
+                        </div>
+                        <span>{{ about_page.satisfaction_text }}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="about__content-four">
+                    <div class="section__title section__title-two mb-15">
+                        <span class="sub-title">{{ about_page.subtitle }}</span>
+                        <h2 class="title">{{ about_page.title }}</h2>
+                    </div>
+                    <p>{{ about_page.description }}</p>
+                    {% if about_features %}
+                    <div class="about__content-inner-three">
+                        <ul class="choose__list choose__list-grid list-wrap" data-sal="slide-right"
+                            data-sal-duration="700" data-sal-delay="100">
+                            {% for feature in about_features %}
+                            <li>
+                                <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M29.9142 11.0033C30.4204 12.8928 28.5305 14.9239 28.2895 16.7482C28.0392 18.6401 29.31 21.0892 28.372 22.7197C27.434 24.35 24.6725 24.4711 23.1593 25.6339C21.7009 26.7586 20.8849 29.4083 18.9964 29.9144C17.108 30.4204 15.0765 28.5295 13.251 28.2886C11.3592 28.0384 8.91003 29.3092 7.27958 28.3713C5.64914 27.4332 5.52798 24.6719 4.36627 23.1584C3.24138 21.7001 0.592009 20.885 0.0857368 18.9957C-0.420555 17.1063 1.47056 15.0757 1.71164 13.2514C1.96094 11.3598 0.690114 8.91071 1.62814 7.2803C2.56617 5.6499 5.32758 5.52875 6.84086 4.3661C8.30021 3.24097 9.1152 0.591668 11.0037 0.0856724C12.8922 -0.420342 14.9247 1.47019 16.7491 1.71127C18.641 1.96154 21.0903 0.69075 22.7206 1.62875C24.3511 2.56676 24.4722 5.3281 25.6349 6.84134C26.7545 8.29583 29.4068 9.11001 29.9142 11.0033Z"
+                                        fill="currentColor" />
+                                    <path d="M20.8182 10.5L12.8182 18.5L9.18182 14.8636" stroke="white"
+                                        stroke-width="2.18182" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                                {{ feature.title }}
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% endif %}
+                    <div class="about__content-bottom about__content-bottom-two" data-sal="slide-up"
+                        data-sal-duration="800" data-sal-delay="300">
+                        <a href="{% url 'contact' %}" class="tg-btn">Bize Ulaşın
+                            <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 9L9 1M9 1H1M9 1V9" stroke="currentColor" stroke-width="1.6"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}
+
+{% if about_counters %}
+<section class="counter__area-three section-pb-140">
+    <div class="container">
+        <div class="row gutter-y-30 justify-content-center">
+            {% for counter in about_counters %}
+            <div class="col-xl-3 col-lg-4 col-sm-6" data-sal="slide-up" data-sal-duration="700" data-sal-delay="100">
+                <div class="counter__item-four counter__item-five">
+                    <div class="counter__content-two">
+                        <h4 class="title">{{ counter.title }}</h4>
+                        <p>{{ counter.description }}</p>
+                        <h3 class="count"><span class="counter-number">{{ counter.number }}</span>{{ counter.symbol }}</h3>
+                        <div class="shape">
+                            {% if forloop.counter == 1 %}
+                                <svg width="61" height="48" viewBox="0 0 61 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M60.651 13.5588L47.1736 0.342306C46.7185 -0.10442 45.9832 -0.115372 45.5145 0.318122C44.4678 1.28504 39.5482 5.82759 39.477 5.89558C39.4728 5.89969 39.4681 5.90334 39.4639 5.90745C38.2986 7.05005 37.1514 7.55929 35.744 7.55929C32.867 7.55929 30.6629 8.356 28.8325 10.0558C27.3316 8.66218 25.6306 7.94167 23.2566 7.7012L17.3005 1.8609C16.8351 1.40459 16.0807 1.40459 15.6153 1.8609L0.34905 16.8297C-0.104243 17.2736 -0.119135 17.991 0.322522 18.4532C0.33183 18.4628 0.339742 18.4724 0.34905 18.4815C0.34905 18.4815 10.2833 28.2068 10.2973 28.22L9.87658 28.6325C8.2477 30.2296 8.24677 32.816 9.87704 34.4144C10.6487 35.1701 11.7088 35.6191 12.8686 35.6077C12.856 36.7297 13.2981 37.7688 14.0893 38.5445C14.893 39.3325 15.9672 39.7505 17.0809 39.7391C17.0688 40.8602 17.5104 41.8988 18.3016 42.6745C19.0732 43.4302 20.1329 43.8792 21.2931 43.8678C21.2806 44.9898 21.7227 46.0289 22.5139 46.8046C24.1395 48.3985 26.7843 48.3985 28.4104 46.8046L28.832 46.3912L29.2537 46.8046C30.8793 48.3985 33.5241 48.3985 35.1502 46.8046C35.9395 46.0307 36.3826 44.9935 36.3714 43.8701C37.5093 43.8815 38.5695 43.4521 39.3629 42.6741C40.1867 41.8664 40.5925 40.8018 40.5813 39.7409C41.7365 39.7528 42.792 39.312 43.5748 38.5445C44.3673 37.7678 44.8085 36.727 44.7955 35.6077C45.9026 35.6186 46.9791 35.2061 47.7875 34.414C49.4168 32.8164 49.4168 30.2305 47.7875 28.6325L47.3672 28.2205C55.674 20.085 45.1659 30.3962 60.651 15.2107C61.1163 14.7544 61.1163 14.0151 60.651 13.5588Z" fill="currentColor"/></svg>
+                            {% elif forloop.counter == 2 %}
+                                <svg width="54" height="50" viewBox="0 0 54 50" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M28.0547 40.625C28.0547 41.2004 27.5826 41.6667 27 41.6667C26.4175 41.6667 25.9453 41.2004 25.9453 40.625C25.9453 40.0496 26.4175 39.5833 27 39.5833C27.5826 39.5833 28.0547 40.0496 28.0547 40.625Z" fill="currentColor"/><path d="M50.5195 31.25C50.5195 27.8035 47.6809 25 44.1914 25C40.7019 25 37.8633 27.8035 37.8633 31.25C37.8633 34.6965 40.7019 37.5 44.1914 37.5C47.6809 37.5 50.5195 34.6965 50.5195 31.25Z" fill="currentColor"/></svg>
+                            {% elif forloop.counter == 3 %}
+                                <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M33.5566 26.2437C37.3659 26.132 40.9343 24.5943 43.64 21.8897C46.4516 19.077 48 15.3384 48 11.3626C48 9.23276 46.2673 7.50008 44.1375 7.50008H38.0625V5.46374C39.1537 5.07674 39.9375 4.03471 39.9375 2.81249C39.9375 1.26169 38.6758 0 37.125 0H10.875C9.32419 0 8.0625 1.26169 8.0625 2.81249C8.0625 4.03462 8.84634 5.07674 9.9375 5.46374V7.49999H3.8625C1.72697 7.49999 0 9.22696 0 11.3626C0 15.3251 1.53928 19.0544 4.33425 21.8633C7.04259 24.585 10.6203 26.1322 14.4435 26.2437C16.0177 27.7044 17.9256 28.8097 20.039 29.4312L17.6912 36.75H17.4375C16.4036 36.75 15.5625 37.5911 15.5625 38.625V40.5H13.2188C12.1849 40.5 11.3438 41.3411 11.3438 42.375V46.125C11.3438 47.1589 12.1849 48 13.2188 48H34.7812C35.8151 48 36.6562 47.1589 36.6562 46.125V42.375C36.6562 41.3411 35.8151 40.5 34.7812 40.5H32.4375V38.625C32.4375 37.5911 31.5964 36.75 30.5625 36.75H30.3088L27.961 29.4312C30.0744 28.8097 31.9823 27.7044 33.5566 26.2437Z" fill="currentColor"/></svg>
+                            {% else %}
+                                <svg width="57" height="53" viewBox="0 0 57 53" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M55.8867 50.7917H54.5508V14.3542C54.5508 13.7443 54.0524 13.25 53.4375 13.25H44.5312C43.9163 13.25 43.418 13.7443 43.418 14.3542V50.7917H40.9688V23.1875C40.9688 22.5776 40.4704 22.0833 39.8555 22.0833H30.9492C30.3343 22.0833 29.8359 22.5776 29.8359 23.1875V50.7917H27.3867V32.0208C27.3867 31.411 26.8884 30.9167 26.2734 30.9167H17.3672C16.7523 30.9167 16.2539 31.411 16.2539 32.0208V50.7917H13.8047V40.8542C13.8047 40.2443 13.3063 39.75 12.6914 39.75H3.5625C2.94759 39.75 2.44922 40.2443 2.44922 40.8542V50.7917H1.11328C0.498367 50.7917 0 51.286 0 51.8958C0 52.5057 0.498367 53 1.11328 53H55.8867C56.5016 53 57 52.5057 57 51.8958C57 51.286 56.5016 50.7917 55.8867 50.7917Z" fill="currentColor"/></svg>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+{% endblock content %}

@@ -1,0 +1,83 @@
+{% extends 'unfold/layouts/base.html' %}
+{% load i18n unfold %}
+
+{% block breadcrumbs %}{% endblock %}
+
+{% block title %}
+    Gösterge Paneli | {{ site_title|default:_('Django site admin') }}
+{% endblock %}
+
+{% block branding %}
+    <h1 id="site-name"><a href="{% url 'admin:index' %}">{{ site_header|default:_('Django administration') }}</a></h1>
+{% endblock %}
+
+{% block content %}
+    {% include "unfold/helpers/messages.html" %}
+    
+    <div class="flex flex-col gap-6 w-full -mt-4">
+        <h2 class="text-3xl font-bold text-gray-900 dark:text-white tracking-tight">Gösterge Paneli</h2>
+        <p class="text-sm text-gray-500 dark:text-gray-400 -mt-4 mb-4">Sitenizin güncel raporlarına ve anlık içerik istatistiklerine buradan ulaşabilirsiniz.</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 mb-8 w-full">
+            
+            <!-- Card 1 -->
+            <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 flex flex-col justify-between transition-all hover:shadow-md">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="w-12 h-12 bg-primary-50 dark:bg-primary-900/20 rounded-xl flex items-center justify-center text-primary-600 dark:text-primary-500">
+                        <span class="material-symbols-outlined text-2xl">mark_email_unread</span>
+                    </div>
+                    {% if custom_data.unread_messages > 0 %}
+                    <span class="bg-red-100 text-red-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">Yeni</span>
+                    {% else %}
+                    <span class="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">Tümü Okundu</span>
+                    {% endif %}
+                </div>
+                <div>
+                    <p class="text-4xl font-bold text-gray-900 dark:text-white">{{ custom_data.unread_messages }}</p>
+                    <p class="text-sm font-medium text-gray-500 dark:text-gray-400 mt-1">Okunmamış Mesaj</p>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 flex flex-col justify-between transition-all hover:shadow-md">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="w-12 h-12 bg-blue-50 dark:bg-blue-900/20 rounded-xl flex items-center justify-center text-blue-600 dark:text-blue-500">
+                        <span class="material-symbols-outlined text-2xl">forum</span>
+                    </div>
+                </div>
+                <div>
+                    <p class="text-4xl font-bold text-gray-900 dark:text-white">{{ custom_data.total_messages }}</p>
+                    <p class="text-sm font-medium text-gray-500 dark:text-gray-400 mt-1">Toplam İletişim</p>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 flex flex-col justify-between transition-all hover:shadow-md">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="w-12 h-12 bg-emerald-50 dark:bg-emerald-900/20 rounded-xl flex items-center justify-center text-emerald-600 dark:text-emerald-500">
+                        <span class="material-symbols-outlined text-2xl">design_services</span>
+                    </div>
+                </div>
+                <div>
+                    <p class="text-4xl font-bold text-gray-900 dark:text-white">{{ custom_data.total_services }}</p>
+                    <p class="text-sm font-medium text-gray-500 dark:text-gray-400 mt-1">Aktif Hizmetler</p>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 flex flex-col justify-between transition-all hover:shadow-md">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="w-12 h-12 bg-purple-50 dark:bg-purple-900/20 rounded-xl flex items-center justify-center text-purple-600 dark:text-purple-500">
+                        <span class="material-symbols-outlined text-2xl">star_rate</span>
+                    </div>
+                </div>
+                <div>
+                    <p class="text-4xl font-bold text-gray-900 dark:text-white">{{ custom_data.total_references }}</p>
+                    <p class="text-sm font-medium text-gray-500 dark:text-gray-400 mt-1">Referans Sayısı</p>
+                </div>
+            </div>
+            
+        </div>
+        
+    </div>
+{% endblock %}

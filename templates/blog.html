@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Duyurular & Blog | VOLL{% endblock %}
+{% block description %}VOLL blog ve duyuruları. SAP, yazılım ve teknoloji dünyasından güncel içerikler.{% endblock %}
+
+{% block content %}
+    <section class="breadcrumb__area breadcrumb__bg fix" data-background="{% if page_settings %}{{ page_settings.header_bg.url }}{% else %}{% static 'img/bg/breadcrumb_bg.jpg' %}{% endif %}">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="breadcrumb__content">
+                        <h2 class="title">Duyurular</h2>
+                        <nav class="breadcrumb">
+                            <span property="itemListElement" typeof="ListItem">
+                                <a href="{% url 'index' %}">Anasayfa</a>
+                            </span>
+                            <span class="breadcrumb-separator">/</span>
+                            <span property="itemListElement" typeof="ListItem">Duyurular</span>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="blog-post__area-four section-py-140">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="inner-blog-post-wrap">
+                        
+                        {% for b in page_obj %}
+                        <div class="blog-post__item-five">
+                            <div class="blog-post__thumb-five">
+                                <a href="{% url 'blog_details' b.id %}"><img src="{{ b.image.url }}" alt="{{ b.title }}"></a>
+                            </div>
+                            <div class="blog-post__content-five">
+                                <ul class="blog-post__meta blog-post__meta-three list-wrap">
+                                    <li>{{ b.created_at|date:"d F, Y" }}</li>
+                                    <li>Yazar: <a href="#">{{ b.author }}</a></li>
+                                </ul>
+                                <h2 class="post-title"><a href="{% url 'blog_details' b.id %}">{{ b.title }}</a></h2>
+                                <p>{{ b.content|truncatewords:20 }}</p>
+                                <a href="{% url 'blog_details' b.id %}" class="tg-btn">Devamını Oku
+                                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M1 9L9 1M9 1H1M9 1V9" stroke="currentColor" stroke-width="1.6"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M1 9L9 1M9 1H1M9 1V9" stroke="currentColor" stroke-width="1.6"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        {% empty %}
+                            <p>Henüz bir duyuru/blog yazısı eklenmemiş.</p>
+                        {% endfor %}
+
+                    </div>
+                    
+                    {% if page_obj.has_other_pages %}
+                    <nav class="pagination__wrap mt-40">
+                        <ul class="list-wrap">
+                            {% if page_obj.has_previous %}
+                                <li><a href="?page={{ page_obj.previous_page_number }}">Önceki</a></li>
+                            {% endif %}
+                            
+                            <li class="active"><a href="#">{{ page_obj.number }}</a></li>
+                            
+                            {% if page_obj.has_next %}
+                                <li><a href="?page={{ page_obj.next_page_number }}">Sonraki</a></li>
+                            {% endif %}
+                        </ul>
+                    </nav>
+                    {% endif %}
+                </div>
+                
+                <div class="col-lg-4">
+                    <aside class="blog__sidebar">
+                        <div class="sidebar__widget">
+                            <h4 class="widget__title">Arama</h4>
+                            <form action="#" class="blog__search">
+                                <input type="text" placeholder="Arama...">
+                                <button type="submit">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                        <path d="M17 17L13.5247 13.5247M15.681 8.3405C15.681 12.3945 12.3945 15.681 8.3405 15.681C4.28645 15.681 1 12.3945 1 8.3405C1 4.28645 4.28645 1 8.3405 1C12.3945 1 15.681 4.28645 15.681 8.3405Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </button>
+                            </form>
+                        </div>
+                        <div class="sidebar__widget">
+                            <h4 class="widget__title">Son Yazılar</h4>
+                            <div class="rc-post-wrap">
+                                
+                                {% for rb in recent_blogs %}
+                                <div class="rc-post-item">
+                                    <div class="thumb">
+                                        <a href="{% url 'blog_details' rb.id %}"><img src="{{ rb.image.url }}" alt=""></a>
+                                    </div>
+                                    <div class="content">
+                                        <span class="date">
+                                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M12.1111 2V4.80003M5.88888 2V4.80003M2 7.59992H16M3.55556 3.39988H14.4444C15.3036 3.39988 16 4.02668 16 4.79989V14.6C16 15.3732 15.3036 16 14.4444 16H3.55556C2.69645 16 2 15.3732 2 14.6V4.79989C2 4.02668 2.69645 3.39988 3.55556 3.39988Z" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"></path>
+                                            </svg>
+                                            {{ rb.created_at|date:"d F, Y" }}
+                                        </span>
+                                        <h2 class="post-title"><a href="{% url 'blog_details' rb.id %}">{{ rb.title }}</a></h2>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                                
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock content %}
