@@ -1,8 +1,11 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Duyurular & Blog | VOLL{% endblock %}
-{% block description %}VOLL blog ve duyuruları. SAP, yazılım ve teknoloji dünyasından güncel içerikler.{% endblock %}
+{% block title %}Blog - Teknoloji ve SAP Haberleri | VOLL{% endblock %}
+{% block description %}SAP, ERP, dijital dönüşüm ve yazılım dünyasından güncel makaleler. VOLL uzmanlarından teknoloji içerikleri.{% endblock %}
+{% block keywords %}SAP blog, ERP haberleri, dijital dönüşüm makaleleri, teknoloji blog Ankara{% endblock %}
+{% block og_title %}Blog | VOLL{% endblock %}
+{% block og_description %}Teknoloji ve SAP dünyasından güncel makaleler ve haberler.{% endblock %}
 
 {% block content %}
     <section class="breadcrumb__area breadcrumb__bg fix" data-background="{% if page_settings %}{{ page_settings.header_bg.url }}{% else %}{% static 'img/bg/breadcrumb_bg.jpg' %}{% endif %}">

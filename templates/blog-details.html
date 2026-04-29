@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}{{ blog.seo_title|default:blog.title }} | VOLL{% endblock %}
-{% block description %}{{ blog.seo_description|default:blog.short_description }}{% endblock %}
+{% block title %}{{ post.title }} | VOLL Blog{% endblock %}
+{% block description %}{{ post.summary|default:"VOLL blogunda SAP, ERP ve dijital dönüşüm hakkında uzman içerikleri okuyun." }}{% endblock %}
+{% block keywords %}{{ post.tags|default:"SAP, ERP, dijital dönüşüm, yazılım" }}{% endblock %}
+{% block og_title %}{{ post.title }} | VOLL{% endblock %}
+{% block og_description %}{{ post.summary|default:"VOLL blog yazısı." }}{% endblock %}
 
-{% block og_title %}{{ blog.seo_title|default:blog.title }} | VOLL{% endblock %}
-{% block og_description %}{{ blog.seo_description|default:blog.short_description }}{% endblock %}
 {% block content %}
     <section class="breadcrumb__area breadcrumb__bg fix" data-background="{% if page_settings %}{{ page_settings.header_bg.url }}{% else %}{% static 'img/bg/breadcrumb_bg.jpg' %}{% endif %}">
         <div class="container">

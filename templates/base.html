@@ -7,12 +7,17 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>{% block title %}VOLL - SAP, Web ve Mobil Teknoloji Çözümleri{% endblock %}</title>
+    <meta name="google-site-verification" content="hYg52_ELYqyGs2mVjCtxixdw-jvGUhoYeo7jU4Iu6Vc" />
     <meta name="description" content="{% block description %}VOLL olarak SAP danışmanlığı, özel yazılım geliştirme ve dijital dönüşüm hizmetleriyle işletmenizin geleceğini inşa ediyoruz.{% endblock %}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+
+    <!-- ✅ YENİ -->
+    <meta name="robots" content="{% block robots %}index, follow{% endblock %}">
+    <meta name="keywords" content="{% block keywords %}SAP danışmanlığı Ankara, ERP çözümleri, SAP S4HANA, dijital dönüşüm{% endblock %}">
+
     <!-- Canonical URL -->
     <link rel="canonical" href="{{ request.build_absolute_uri }}" />
-    
+
     <!-- Open Graph / Social Media Meta Tags -->
     <meta property="og:title" content="{% block og_title %}VOLL - SAP, Web ve Mobil Teknoloji Çözümleri{% endblock %}">
     <meta property="og:description" content="{% block og_description %}VOLL olarak SAP danışmanlığı, özel yazılım geliştirme ve dijital dönüşüm hizmetleriyle işletmenizin geleceğini inşa ediyoruz.{% endblock %}">
@@ -21,6 +26,35 @@
     {% if settings.logo_dark %}
     <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ settings.logo_dark.url }}">
     {% endif %}
+
+    <!-- ✅ YENİ: Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{% block twitter_title %}VOLL - SAP, Web ve Mobil Teknoloji Çözümleri{% endblock %}">
+    <meta name="twitter:description" content="{% block twitter_description %}Ankara merkezli SAP danışmanlığı ve dijital dönüşüm hizmetleri.{% endblock %}">
+
+    <!-- ✅ YENİ: LocalBusiness Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "VOLL",
+      "url": "https://www.volltr.com",
+      "logo": "{{ request.scheme }}://{{ request.get_host }}{% if settings.logo_dark %}{{ settings.logo_dark.url }}{% endif %}",
+      "description": "Ankara merkezli SAP danışmanlığı, ERP dönüşümü ve web çözümleri.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Ankara",
+        "addressCountry": "TR"
+      },
+      "email": "{{ settings.email }}",
+      "foundingDate": "2022",
+      "areaServed": "TR",
+      "serviceType": ["SAP Danışmanlığı", "ERP Çözümleri", "Web Tasarım", "Yazılım Geliştirme"]
+    }
+    </script>
+
+    <!-- ✅ YENİ: Sayfa bazlı extra head bloğu -->
+    {% block extra_head %}{% endblock %}
 
     <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/favicon/favicon.png' %}">
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">

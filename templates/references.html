@@ -1,8 +1,11 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Referanslarımız | VOLL{% endblock %}
-{% block description %}VOLL referansları. SAP, yazılım ve dijital dönüşüm projelerini başarıyla tamamladığımız iş ortaklarımız.{% endblock %}
+{% block title %}Referanslarımız - Tamamlanan Projeler | VOLL{% endblock %}
+{% block description %}VOLL'un tamamladığı 42+ proje ve 14+ mutlu müşteri. SAP, DİA ve web projelerindeki başarı hikayelerimizi inceleyin.{% endblock %}
+{% block keywords %}VOLL referanslar, SAP projeleri Ankara, ERP proje örnekleri, yazılım referansları{% endblock %}
+{% block og_title %}Referanslarımız | VOLL{% endblock %}
+{% block og_description %}42+ tamamlanan proje ve 14+ mutlu müşteri ile güvenilir iş ortağınız.{% endblock %}
 
 {% block content %}
     <section class="breadcrumb__area breadcrumb__bg fix" data-background="{% if page_settings %}{{ page_settings.header_bg.url }}{% else %}{% static 'img/bg/breadcrumb_bg.jpg' %}{% endif %}">

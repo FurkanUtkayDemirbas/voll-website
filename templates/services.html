@@ -1,8 +1,11 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}{{ kategori.name }} | Hizmetler | VOLL{% endblock %}
-{% block description %}VOLL {{ kategori.name }} hizmetleri hakkında detaylı bilgi edinin.{% endblock %}
+{% block title %}Hizmetlerimiz - SAP, DİA ve Web Çözümleri | VOLL{% endblock %}
+{% block description %}SAP danışmanlığı, DİA ticari yazılım, kurumsal web tasarımı ve özel yazılım geliştirme. Ankara'da profesyonel BT çözümleri.{% endblock %}
+{% block keywords %}SAP hizmetleri, DİA yazılım, web tasarım Ankara, özel yazılım geliştirme, e-ticaret{% endblock %}
+{% block og_title %}Hizmetlerimiz | VOLL{% endblock %}
+{% block og_description %}SAP, DİA ve web çözümleriyle işletmenizi dijital geleceğe taşıyoruz.{% endblock %}
 
 {% block content %}
     <section class="breadcrumb__area breadcrumb__bg fix" data-background="{% if page_settings %}{{ page_settings.header_bg.url }}{% else %}{% static 'img/bg/breadcrumb_bg.jpg' %}{% endif %}">
