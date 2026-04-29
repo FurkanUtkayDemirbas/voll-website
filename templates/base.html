@@ -70,11 +70,7 @@
 <body class="{% if request.path == '/' %}home-page{% else %}inner-page{% endif %}">
 
     <div id="preloader">
-        {% if settings.logo_dark %}
-            <img src="{{ settings.logo_dark.url }}" alt="Logo" class="preloader-logo">
-        {% else %}
-            <img src="{% static 'img/logo/volllogodark.png' %}" alt="Logo" class="preloader-logo">
-        {% endif %}
+        <img src="{% static 'img/logo/volllogo.png' %}" alt="Logo" class="preloader-logo">
     </div>
     <button class="scroll__top scroll-to-target" data-target="html">
         <svg width="22" height="21" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg">

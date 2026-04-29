@@ -43,16 +43,14 @@
                     data-sal-delay="100">
                     <div class="blog-post__item-four">
                         <div class="blog-post__thumb-four">
-                            <a href="{{ service.link }}">
-                                {% if service.image %}
-                                    <img src="{{ service.image.url }}" alt="{{ service.title }}">
-                                {% else %}
-                                    <img src="{% static 'img/project/project_img10.jpg' %}" alt="{{ service.title }}">
-                                {% endif %}
-                            </a>
+                            {% if service.image %}
+                                <img src="{{ service.image.url }}" alt="{{ service.title }}" style="cursor: default;">
+                            {% else %}
+                                <img src="{% static 'img/project/project_img10.jpg' %}" alt="{{ service.title }}" style="cursor: default;">
+                            {% endif %}
                         </div>
                         <div class="blog-post__content-four">
-                            <h2 class="post-title"><a href="{{ service.link }}">{{ service.title }}</a></h2>
+                            <h2 class="post-title">{{ service.title }}</h2>
                             <p>{{ service.description }}</p>
                         </div>
                     </div>

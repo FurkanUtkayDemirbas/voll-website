@@ -934,7 +934,9 @@ textarea {
 }
 
 .preloader-logo {
-  max-width: 200px;
+  width: 200px;
+  max-width: 90% !important;
+  height: auto;
   animation: preloaderPulse 2s infinite ease-in-out;
 }
 
@@ -3299,10 +3301,73 @@ textarea {
   padding: 10px 0;
 }
 
+/* Anasayfada sticky navbar arka planı şeffaf olsun */
+body.home-page .tg-header__area-two.sticky-menu {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
 @media (max-width: 767.98px) {
   .tg-header__area-two.sticky-menu {
     background: var(--tg-color-white-default);
   }
+}
+
+/* Anasayfada navbar - premium vibrant blue gradient (rgb(24, 0, 217) bazlı) */
+body.home-page .tg-header__area-two .tgmenu__nav {
+  background: linear-gradient(135deg, #060158 0%, #110194 45%, #2f1dc7 100%);
+  border-radius: 100px;
+  padding: 0 13px 0 30px;
+  box-shadow: 0 4px 32px rgba(24, 0, 217, 0.35), 0 1px 0 rgba(255, 255, 255, 0.08) inset;
+  backdrop-filter: blur(12px);
+}
+
+/* Sadece üst seviye nav linkleri beyaz */
+body.home-page .tg-header__area-two .tgmenu__navbar-wrap>ul>li>a {
+  color: #ffffff !important;
+}
+
+/* Sub-menu açıldığında linkler siyah kalmalı (beyaz bg üzerinde) */
+body.home-page .tg-header__area-two .tgmenu__navbar-wrap ul li .sub-menu li a {
+  color: #111111 !important;
+}
+
+body.home-page .tg-header__area-two .tgmenu__navbar-wrap ul li .sub-menu li:hover>a,
+body.home-page .tg-header__area-two .tgmenu__navbar-wrap ul li .sub-menu li.active>a {
+  color: var(--tg-theme-primary) !important;
+}
+
+/* Üst nav hover efekti */
+body.home-page .tg-header__area-two .tgmenu__navbar-wrap>ul>li:hover>a {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+/* Dropdown oku da beyaz olsun */
+body.home-page .tg-header__area-two .tgmenu__main-menu li.menu-item-has-children>a::after {
+  color: #ffffff;
+}
+
+body.home-page .tg-header__area-two .mobile-nav-toggler-two {
+  background: rgba(255, 255, 255, 0.15);
+  color: var(--tg-color-white-default);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Anasayfada sticky durumunda logonun beyaz kalması ve linklerin siyah olmaması */
+body.home-page .sticky-menu .logo-white {
+  display: block !important;
+}
+
+body.home-page .sticky-menu .logo-dark {
+  display: none !important;
+}
+
+body.home-page .sticky-menu .tgmenu__navbar-wrap>ul>li>a {
+  color: #ffffff !important;
+}
+
+body.home-page .sticky-menu .tgmenu__main-menu li.menu-item-has-children>a::after {
+  color: #ffffff !important;
 }
 
 .tg-header__area-three {
@@ -3426,16 +3491,16 @@ textarea {
   bottom: 0;
   width: 60%;
   height: 100%;
-  background: linear-gradient(90deg, #000000 0%, rgb(255 255 255 / 0%) 100%);
+  background: transparent;
   z-index: 0;
-  display: block;
+  display: none;
 }
 
 @media (max-width: 991.98px) {
   .slider__bg::before {
-    display: block;
+    display: none;
     width: 100%;
-    background: linear-gradient(90deg, rgba(0, 0, 0, 0.707) 0%, rgba(255, 255, 255, 0.4) 100%);
+    background: transparent;
   }
 }
 
@@ -3536,8 +3601,9 @@ textarea {
 
 .slider__content .title {
   margin-bottom: 12px;
-  color: var(--tg-color-white-default);
+  color: rgb(2, 15, 102);
   font-size: 55px;
+  text-shadow: 0 2px 12px rgba(80, 20, 180, 0.12);
 }
 
 @media (max-width: 1500px) {
@@ -3561,7 +3627,7 @@ textarea {
 .slider__content p {
   margin-bottom: 32px;
   font-weight: 500;
-  color: var(--tg-color-white-default);
+  color: #ffffff;
   width: 90%;
 }
 
@@ -14509,4 +14575,11 @@ blockquote cite {
 
 .inner-page .sticky-menu .tgmenu__navbar-wrap ul li a {
   color: var(--tg-heading-color) !important;
+}
+
+/* About sayfası - sol üst şekilli resim sadece mobilde gizle */
+@media (max-width: 991.98px) {
+  .about__img-four .img-two {
+    display: none !important;
+  }
 }

@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}Referanslarımız - Tamamlanan Projeler | VOLL{% endblock %}
-{% block description %}VOLL'un tamamladığı 42+ proje ve 14+ mutlu müşteri. SAP, DİA ve web projelerindeki başarı hikayelerimizi inceleyin.{% endblock %}
+{% block description %}VOLL'un tamamladığı 42+ proje ve 14+ mutlu müşteri. SAP ve web projelerindeki başarı hikayelerimizi inceleyin.{% endblock %}
 {% block keywords %}VOLL referanslar, SAP projeleri Ankara, ERP proje örnekleri, yazılım referansları{% endblock %}
 {% block og_title %}Referanslarımız | VOLL{% endblock %}
 {% block og_description %}42+ tamamlanan proje ve 14+ mutlu müşteri ile güvenilir iş ortağınız.{% endblock %}
@@ -27,6 +27,7 @@
         </div>
     </section>
     {% for cat in categories %}
+    {% if "DİA" not in cat.title %}
     <section class="brand__area {% if forloop.first %}section-pt-120{% endif %} section-pb-60">
         <div class="container">
             <div class="row justify-content-center">
@@ -49,6 +50,7 @@
             </div>
         </div>
     </section>
+    {% endif %}
     {% endfor %}
 
 {% endblock content %}
