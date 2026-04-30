@@ -1775,8 +1775,8 @@ textarea {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--tg-heading-color);
-  background: var(--tg-color-gray-2);
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
   cursor: pointer;
   border-radius: 5px;
   -webkit-transition: all 500ms ease;
@@ -1804,7 +1804,7 @@ textarea {
   border-radius: 10px;
   width: 12px;
   height: 2px;
-  background-color: var(--tg-theme-secondary);
+  background-color: #ffffff;
   -webkit-transition: all 500ms ease;
   -o-transition: all 500ms ease;
   transition: all 500ms ease;
@@ -1821,7 +1821,7 @@ textarea {
   border-radius: 10px;
   width: 2px;
   height: 12px;
-  background-color: var(--tg-theme-secondary);
+  background-color: #ffffff;
   -webkit-transition: all 500ms ease;
   -o-transition: all 500ms ease;
   transition: all 500ms ease;
@@ -1845,7 +1845,7 @@ textarea {
   padding: 10px 60px 10px 25px;
   font-size: 16px;
   font-weight: 700;
-  color: var(--tg-heading-color);
+  color: #ffffff;
   text-transform: capitalize;
   -webkit-transition: all 500ms ease;
   -o-transition: all 500ms ease;
@@ -1894,6 +1894,7 @@ textarea {
 
 .tgmobile__menu .navigation ul li a {
   display: block;
+  color: #ffffff;
 }
 
 .tgmobile__menu .navigation ul li ul li>a {
@@ -1922,7 +1923,7 @@ textarea {
   width: 35px;
   text-align: center;
   font-size: 14px;
-  color: var(--tg-theme-primary);
+  color: #ffffff;
   cursor: pointer;
   padding: 8px;
   z-index: 10;
@@ -1985,11 +1986,11 @@ textarea {
   position: relative;
   line-height: 32px;
   font-size: 16px;
-  color: var(--tg-theme-secondary);
+  color: #ffffff;
   -webkit-transition: all 500ms ease;
   -o-transition: all 500ms ease;
   transition: all 500ms ease;
-  border: 1px solid #efefef;
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 6px;
 }
 
@@ -2028,10 +2029,10 @@ textarea {
   max-height: 100%;
   overflow-y: auto;
   overflow-x: hidden;
-  background: var(--tg-color-white-default);
+  background: #25AB75;
   padding: 0px 0px;
   z-index: 5;
-  box-shadow: -9px 0 14px 0px rgba(0, 0, 0, 0.06);
+  box-shadow: -9px 0 14px 0px rgba(0, 0, 0, 0.1);
 }
 
 .tgmobile__menu-outer .mobile-nav-toggler {
@@ -2784,7 +2785,7 @@ textarea {
   font-size: 16px;
   font-weight: var(--tg-fw-bold);
   text-transform: capitalize;
-  color: var(--tg-heading-color) !important;
+  color: white !important;
   font-family: var(--tg-heading-font-family);
   padding: 32px 10px;
   display: -webkit-box;
@@ -3257,7 +3258,8 @@ textarea {
 }
 
 .tg-header__area-two {
-  padding-top: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 @media (max-width: 767.98px) {
@@ -3301,11 +3303,7 @@ textarea {
   padding: 10px 0;
 }
 
-/* Anasayfada sticky navbar arka planı şeffaf olsun */
-body.home-page .tg-header__area-two.sticky-menu {
-  background: transparent !important;
-  box-shadow: none !important;
-}
+
 
 @media (max-width: 767.98px) {
   .tg-header__area-two.sticky-menu {
@@ -3313,34 +3311,9 @@ body.home-page .tg-header__area-two.sticky-menu {
   }
 }
 
-/* Anasayfada navbar - premium vibrant blue gradient (rgb(24, 0, 217) bazlı) */
-body.home-page .tg-header__area-two .tgmenu__nav {
-  background: linear-gradient(135deg, #060158 0%, #110194 45%, #2f1dc7 100%);
-  border-radius: 100px;
-  padding: 0 13px 0 30px;
-  box-shadow: 0 4px 32px rgba(24, 0, 217, 0.35), 0 1px 0 rgba(255, 255, 255, 0.08) inset;
-  backdrop-filter: blur(12px);
-}
 
-/* Sadece üst seviye nav linkleri beyaz */
-body.home-page .tg-header__area-two .tgmenu__navbar-wrap>ul>li>a {
-  color: #ffffff !important;
-}
 
-/* Sub-menu açıldığında linkler siyah kalmalı (beyaz bg üzerinde) */
-body.home-page .tg-header__area-two .tgmenu__navbar-wrap ul li .sub-menu li a {
-  color: #111111 !important;
-}
 
-body.home-page .tg-header__area-two .tgmenu__navbar-wrap ul li .sub-menu li:hover>a,
-body.home-page .tg-header__area-two .tgmenu__navbar-wrap ul li .sub-menu li.active>a {
-  color: var(--tg-theme-primary) !important;
-}
-
-/* Üst nav hover efekti */
-body.home-page .tg-header__area-two .tgmenu__navbar-wrap>ul>li:hover>a {
-  color: rgba(255, 255, 255, 0.8) !important;
-}
 
 /* Dropdown oku da beyaz olsun */
 body.home-page .tg-header__area-two .tgmenu__main-menu li.menu-item-has-children>a::after {
@@ -3353,21 +3326,27 @@ body.home-page .tg-header__area-two .mobile-nav-toggler-two {
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-/* Anasayfada sticky durumunda logonun beyaz kalması ve linklerin siyah olmaması */
-body.home-page .sticky-menu .logo-white {
-  display: block !important;
+body.home-page .sticky-menu .mobile-nav-toggler-two {
+  color: #ffffff !important;
+  background: var(--tg-theme-secondary);
+  border-color: rgba(0, 0, 0, 0.1);
 }
 
-body.home-page .sticky-menu .logo-dark {
+/* Anasayfada sticky durumunda logonun koyu versiyonu görünsün */
+body.home-page .sticky-menu .logo-white {
   display: none !important;
 }
 
+body.home-page .sticky-menu .logo-dark {
+  display: block !important;
+}
+
 body.home-page .sticky-menu .tgmenu__navbar-wrap>ul>li>a {
-  color: #ffffff !important;
+  color: #111111 !important;
 }
 
 body.home-page .sticky-menu .tgmenu__main-menu li.menu-item-has-children>a::after {
-  color: #ffffff !important;
+  color: #111111 !important;
 }
 
 .tg-header__area-three {
@@ -3601,7 +3580,7 @@ body.home-page .sticky-menu .tgmenu__main-menu li.menu-item-has-children>a::afte
 
 .slider__content .title {
   margin-bottom: 12px;
-  color: rgb(2, 15, 102);
+  color: rgb(255, 255, 255);
   font-size: 55px;
   text-shadow: 0 2px 12px rgba(80, 20, 180, 0.12);
 }

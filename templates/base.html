@@ -141,10 +141,10 @@
                 <div class="close-btn"><i class="tg-flaticon-close-1"></i></div>
                 <div class="nav-logo">
                     <a href="{% url 'index' %}">
-                        {% if settings.logo_dark %}
-                            <img src="{{ settings.logo_dark.url }}" alt="Logo">
+                        {% if settings.logo_white %}
+                            <img src="{{ settings.logo_white.url }}" alt="Logo">
                         {% else %}
-                            <img src="{% static 'img/logo/volllogodark.png' %}" alt="Logo">
+                            <img src="{% static 'img/logo/volllogowhite.png' %}" alt="Logo">
                         {% endif %}
                     </a>
                 </div>
