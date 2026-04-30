@@ -1274,7 +1274,7 @@ textarea {
   height: 100%;
   z-index: -1;
   pointer-events: none;
-  background: rgb(0, 17, 123);
+  background: var(--tg-theme-primary);
 }
 
 .breadcrumb__content .title {
@@ -1312,7 +1312,7 @@ textarea {
 .breadcrumb__content .breadcrumb {
   margin-bottom: 0;
   display: inline-flex;
-  background: var(--tg-color-blue-light-4);
+  background: #000c53;
   -webkit-border-radius: 80px;
   -moz-border-radius: 80px;
   -o-border-radius: 80px;
