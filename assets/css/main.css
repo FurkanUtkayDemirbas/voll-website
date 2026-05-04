@@ -1274,7 +1274,7 @@ textarea {
   height: 100%;
   z-index: -1;
   pointer-events: none;
-  background: var(--tg-theme-primary);
+  background: #000e5d;
 }
 
 .breadcrumb__content .title {
@@ -1312,7 +1312,7 @@ textarea {
 .breadcrumb__content .breadcrumb {
   margin-bottom: 0;
   display: inline-flex;
-  background: #000c53;
+  background: #000000;
   -webkit-border-radius: 80px;
   -moz-border-radius: 80px;
   -o-border-radius: 80px;
@@ -2029,7 +2029,7 @@ textarea {
   max-height: 100%;
   overflow-y: auto;
   overflow-x: hidden;
-  background: #25AB75;
+  background: #00117b;
   padding: 0px 0px;
   z-index: 5;
   box-shadow: -9px 0 14px 0px rgba(0, 0, 0, 0.1);
