@@ -4112,17 +4112,20 @@ body.home-page .sticky-menu .tgmenu__main-menu li.menu-item-has-children>a::afte
 .brand__area {
   padding: 50px 50px;
   background: var(--tg-color-gray-3);
+  margin-bottom: 50px;
 }
 
 @media (max-width: 1500px) {
   .brand__area {
     padding: 50px 30px;
+    margin-bottom: 50px;
   }
 }
 
 @media (max-width: 1199.98px) {
   .brand__area {
     padding: 45px 20px;
+    margin-bottom: 50px;
   }
 }
 
@@ -4282,6 +4285,15 @@ body.home-page .sticky-menu .tgmenu__main-menu li.menu-item-has-children>a::afte
 
 .brand__item img {
   cursor: pointer;
+  width: 100%;
+  max-width: 145px;
+  height: 70px;
+  object-fit: contain;
+  transition: all 0.3s ease-in-out;
+}
+
+.brand__item:hover img {
+  transform: scale(1.05);
 }
 
 /*=============================
@@ -4816,12 +4828,15 @@ body.home-page .sticky-menu .tgmenu__main-menu li.menu-item-has-children>a::afte
 .about__content>p {
   margin-bottom: 40px;
   text-transform: capitalize;
-  font-weight: 500;
+  font-weight: bold;
+  color: var(--tg-heading-color);
 }
 
 @media (max-width: 1199.98px) {
   .about__content>p {
     margin-bottom: 30px;
+    font-weight: bold;
+    color: var(--tg-heading-color);
   }
 }
 
@@ -5546,20 +5561,18 @@ body.home-page .sticky-menu .tgmenu__main-menu li.menu-item-has-children>a::afte
 
 .counter__item:hover .count {
   color: var(--tg-theme-secondary);
-  -webkit-text-stroke: 1.5px var(--tg-theme-secondary);
 }
 
 .counter__item .count {
-  font-size: 100px;
-  line-height: 0.8;
+  font-size: 64px;
+  line-height: 1;
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
   display: -webkit-flex;
   display: flex;
   align-items: center;
-  color: transparent;
-  -webkit-text-stroke: 2px var(--tg-body-color);
+  color: var(--tg-theme-primary);
   -webkit-transition: all 0.3s ease-out 0s;
   -moz-transition: all 0.3s ease-out 0s;
   -ms-transition: all 0.3s ease-out 0s;
@@ -13452,7 +13465,7 @@ blockquote cite {
 }
 
 .contact-map {
-  width: 520px;
+  width: 100%;
   height: 458px;
   margin: 0 auto;
 }

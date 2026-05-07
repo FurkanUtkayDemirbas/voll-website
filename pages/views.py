@@ -36,7 +36,7 @@ def index(request):
     latest_blogs = Blog.objects.all().order_by('-created_at')[:4]
 
     context = {
-        'counters': Counter.objects.all(),
+
         'team_members': TeamMember.objects.all(),
         'sap_services': Service.objects.filter(category__slug='sap-solutions'),
         'dia_services': Service.objects.filter(category__slug='dia-solutions'),

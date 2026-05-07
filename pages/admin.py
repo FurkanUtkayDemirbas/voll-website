@@ -5,7 +5,7 @@ from adminsortable2.admin import SortableAdminMixin
 from django.utils.html import format_html
 from django.urls import reverse
 from .models import (
-    Slider, Counter, TeamMember, ServiceCategory, Service, Blog, About,
+    Slider, TeamMember, ServiceCategory, Service, Blog, About,
     AboutFeature, Brand, SiteSettings, ChooseUs, ChooseUsFeature, CounterTwo,
     MarqueeItem, ContactMessage, MenuItem, AboutPage, AboutPageFeature,
     AboutCounter, ExpertiseArea, ExpertiseSkill, ServicePageSetting,
@@ -174,10 +174,7 @@ class AboutFeatureAdmin(BaseUnfoldAdmin):
     search_fields = ('title',)
 
 
-@admin.register(Counter)
-class CounterAdmin(BaseUnfoldAdmin):
-    list_display = ('title', 'number', 'symbol')
-    search_fields = ('title',)
+
 
 
 @admin.register(TeamMember)

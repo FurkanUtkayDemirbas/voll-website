@@ -172,7 +172,6 @@ UNFOLD = {
                     {"title": "Ana Ekran (Slider)", "icon": "image", "link": reverse_lazy("admin:pages_slider_changelist")},
                     {"title": "Markalar", "icon": "verified", "link": reverse_lazy("admin:pages_brand_changelist")},
                     {"title": "Kayan Yazılar", "icon": "linear_scale", "link": reverse_lazy("admin:pages_marqueeitem_changelist")},
-                    {"title": "İstatistikler 1", "icon": "bar_chart", "link": reverse_lazy("admin:pages_counter_changelist")},
                     {"title": "İstatistikler 2", "icon": "insert_chart", "link": reverse_lazy("admin:pages_countertwo_changelist")},
                     {"title": "Neden Biz (Ana Bilgi)", "icon": "lightbulb", "link": reverse_lazy("admin:pages_chooseus_changelist")},
                 ],
