@@ -312,9 +312,10 @@ class ReferenceCategoryAdmin(SortableAdminMixin, BaseUnfoldAdmin):
 
 @admin.register(ReferenceItem)
 class ReferenceItemAdmin(BaseUnfoldAdmin):
-    list_display = ('name', 'category')
+    list_display = ('name', 'category', 'show_on_homepage', 'order')
+    list_editable = ('show_on_homepage', 'order')
     search_fields = ('name',)
-    list_filter = ('category',)
+    list_filter = ('category', 'show_on_homepage')
     search_help_text = "Firma adına göre arayın"
 
 
