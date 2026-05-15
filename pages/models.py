@@ -365,13 +365,10 @@ class ReferenceItem(models.Model):
     category = models.ForeignKey(ReferenceCategory, on_delete=models.CASCADE, related_name='references', verbose_name="Kategori")
     name = models.CharField(max_length=100, verbose_name="Firma Adı")
     image = models.ImageField(upload_to='references/', verbose_name="Firma Logosu")
-    show_on_homepage = models.BooleanField(default=False, verbose_name="Ana Sayfada Göster")
-    order = models.IntegerField(default=0, verbose_name="Sıralama")
 
     class Meta:
-        verbose_name = "Kayıt"
+        verbose_name = "Referans Firma"
         verbose_name_plural = "Referans Firmalar"
-        ordering = ['order']
 
     def __str__(self):
         return f"{self.name} ({self.category.title})"

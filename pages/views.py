@@ -46,7 +46,7 @@ def index(request):
         'slider': Slider.objects.first(),
         'about': About.objects.first(),
         'about_features': AboutFeature.objects.all(),
-        'brands': ReferenceItem.objects.filter(show_on_homepage=True).order_by('order'),
+        'brands': Brand.objects.all(),
         'choose_us': ChooseUs.objects.first(),
         'choose_features': ChooseUsFeature.objects.all(),
         'counter_twos': CounterTwo.objects.all(),
